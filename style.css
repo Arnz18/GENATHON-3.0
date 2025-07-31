@@ -815,6 +815,7 @@ select.form-control {
     transition: all 0.3s ease;
     pointer-events: none;
     z-index: 1000;
+    border: none !important;
 }
 
 .tooltip::before {
@@ -1023,11 +1024,19 @@ html {
 }
 
 /* Focus states for accessibility */
-.nav-icon:focus,
 button:focus,
 .form-input:focus {
     outline: 2px solid #FF4F5A;
     outline-offset: 2px;
+}
+
+/* Custom focus style for nav icons */
+.nav-icon:focus {
+    outline: none; 
+}
+
+.nav-icon:focus > div {
+    background-color: #FF4F5A; 
 }
 
 /* Print styles */
