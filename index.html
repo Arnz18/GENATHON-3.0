@@ -330,6 +330,33 @@
                 </div>
             </div>
         </section>
+
+        <!-- Gallery Section -->
+<section id="gallery" class="py-16 bg-transparent text-white">
+  <div class="max-w-6xl mx-auto text-center">
+          <h2 class="text-4xl lg:text-5xl font-bold mb-8">
+            Event <span class="text-primary-red">Gallery</span>
+          </h2>
+          <p class="text-lg text-muted-gray mb-12">
+            Snapshots capturing the passion and collaboration of our hackathon.
+          </p>
+
+
+    <!-- Grid of Images -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-4">
+      <!-- Gallery Thumbnails -->
+      <img src="images/genp1.jpg" alt="Gallery Image 1"
+        class="rounded-lg aspect-[4/3] object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
+        onclick="openLightbox(0)" />
+      <img src="images/genp2.jpg" alt="Gallery Image 2"
+        class="rounded-lg aspect-[4/3] object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
+        onclick="openLightbox(1)" />
+      <img src="images/genp3.jpg" alt="Gallery Image 3"
+        class="rounded-lg aspect-[4/3] object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
+        onclick="openLightbox(2)" />
+    </div>
+  </div>
+</section>
         
         <!-- FAQ Section -->
         <section id="faq" class="py-20 px-4">
@@ -350,6 +377,25 @@
                 </div>
             </div>
         </section>
+
+        <!-- Sponsors Section -->
+<section id="sponsors" class="py-16 bg-transparent text-white">
+  <div class="max-w-6xl mx-auto text-center">
+          <h2 class="text-4xl lg:text-5xl font-bold mb-8">
+            Our <span class="text-primary-red">Sponsors</span>
+          </h2>
+          <p class="text-lg text-muted-gray mb-12">
+            We’re grateful to these amazing companies for supporting Genathon 3.0.
+          </p>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-items-center">
+      <img src="images/githubLOGO.jpg" alt="Sponsor 1" class="w-40 h-40 rounded-full object-cover transition-transform duration-300 hover:scale-110" />
+      <img src="images/amazon.png" alt="Sponsor 2" class="w-40 h-40 rounded-full object-cover transition-transform duration-300 hover:scale-110" />
+      <img src="images/geekforgeeksLOGO.jpeg" alt="Sponsor 3" class="w-40 h-40 rounded-full object-cover transition-transform duration-300 hover:scale-110" />
+      <img src="images/Xiaomi_logo.png" alt="Sponsor 4" class="w-40 h-40 rounded-full object-cover transition-transform duration-300 hover:scale-110" />
+    </div>
+  </div>
+</section>
         
         <!-- Contact Section -->
         <section id="contact" class="py-20 px-4">
@@ -653,5 +699,43 @@
   </script>
   <!-- End of Team Section -->
     <script src="app.js"></script>
+     <!-- Lightbox Modal -->
+<div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-50">
+  <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-3xl">&times;</button>
+  <img id="lightboxImage" src="" alt="Preview" class="max-w-full max-h-[80vh] rounded shadow-lg">
+  <!-- Arrows -->
+  <button onclick="prevImage()" class="absolute left-4 text-white text-4xl">&#8592;</button>
+  <button onclick="nextImage()" class="absolute right-4 text-white text-4xl">&#8594;</button>
+</div>
+
+<script>
+  const images = [
+    "images/genp1.jpg",
+    "images/genp2.jpg",
+    "images/genp3.jpg"
+  ];
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    document.getElementById('lightboxImage').src = images[index];
+    document.getElementById('lightbox').classList.remove('hidden');
+    document.getElementById('lightbox').classList.add('flex');
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.add('hidden');
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    document.getElementById('lightboxImage').src = images[currentIndex];
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    document.getElementById('lightboxImage').src = images[currentIndex];
+  }
+</script>
 </body>
 </html>
